@@ -1,4 +1,5 @@
-import { Container, Header, Aside, Services, Main, Banner, Table } from "./styles"
+import { Container, Header, Aside, Services, Main, Banner } from "./styles"
+import Table from "./Table"
 
 import Logo from './assets/logo.svg'
 import ImgBanner from './assets/banner.jpg'
@@ -7,7 +8,13 @@ function App() {
 
   return (
     <Container>
-      <Header>11</Header>
+      <Header>
+        <p>Seja bem vindo!</p>
+        <div>
+          <i class="ri-sun-fill"></i>
+          <i class="ri-user-3-fill"></i>
+        </div>
+      </Header>
       <Aside>
         <img src={Logo} alt="banner" />
         <hr />
@@ -42,10 +49,19 @@ function App() {
         <Banner>
           <img src={ImgBanner} alt="banner" />
           <div>
-            oi
+            <h3>98</h3>
+            <p>Total de Pacientes</p>
+          </div>
+          <div>
+            <h3>98</h3>
+            <p>Pacientes + 60</p>
+          </div>
+          <div>
+            <h3>98</h3>
+            <p>Pacientes + 80</p>
           </div>
         </Banner>
-        <Table></Table>
+        <Table />
       </Main>
     </Container>
   )
