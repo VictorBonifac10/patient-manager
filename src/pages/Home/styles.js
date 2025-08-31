@@ -90,11 +90,14 @@ export const Aside = styled.aside`
 
 export const Services = styled.div`
 
-    div{
+    button{
         display: flex;
+        align-items: center;
         gap: 10px;
         cursor: pointer;
         color: gray;
+        background-color: transparent;
+        border: none;
         padding: 10px;
         transition: 0.5s;
 
@@ -104,10 +107,11 @@ export const Services = styled.div`
 
         li{
             font-weight: 300;
+            font-size: 15px;
         }
     }
 
-    div:hover{
+    button:hover{
         background-color: #3ba2daff;
         color: white;
     }

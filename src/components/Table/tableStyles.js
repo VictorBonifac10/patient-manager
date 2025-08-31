@@ -4,7 +4,26 @@ export const TableContainer = styled.div`
   margin-top: 20px;
 
   .search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     margin-bottom: 15px;
+
+    button{
+      padding: 10px 12px;
+      border: none;
+      border-radius: 50px;
+      background-color: #3ba2daff;
+      transition: background 0.3s;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #125a82ff;
+    }
+
   }
   .search-container input {
     width: 300px;
@@ -13,6 +32,8 @@ export const TableContainer = styled.div`
     border: 1px solid #ccc;
     outline: none;
     font-size: 1rem;
+    color: gray;
+    font-weight: 300;
   }
   .search-container input:focus {
     border-color: #4caf50;
@@ -51,7 +72,7 @@ export const TableContainer = styled.div`
   td.actions i {
     cursor: pointer;
     font-size: 1.2rem;
-    color: #555;
+    color: gray;
     transition: color 0.2s;
   }
   td.actions i.edit:hover {

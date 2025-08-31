@@ -1,4 +1,4 @@
-import { TableContainer } from "../src/styles/tableStyles"
+import { TableContainer } from "./tableStyles"
 
 const Table = () => {
   // Dados de exemplo
@@ -28,7 +28,10 @@ const Table = () => {
   return (
     <TableContainer>
       <div className="search-container">
-        <input type="text" placeholder="Pesquisar usuário..." />
+        <input type="text" placeholder="Pesquisar usuário" />
+        <button type="button">
+          <i class="ri-search-2-line"></i>
+        </button>
       </div>
 
       <table>
@@ -57,8 +60,8 @@ const Table = () => {
               <td>{paciente.email}</td>
               <td>{paciente.plano}</td>
               <td className="actions">
-                <i className="ri-pencil-line edit" title="Editar"></i>
-                <i className="ri-delete-bin-6-line delete" title="Excluir"></i>
+                <i class="ri-pencil-fill edit" title="Editar"></i>
+                <i class="ri-delete-bin-7-fill delete" title="Excluir"></i>
               </td>
             </tr>
           ))}
