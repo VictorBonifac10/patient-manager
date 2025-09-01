@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`  
-    background-color: #a1e1ffff;
+    background-color: ${({ darkMode }) => darkMode ? "#121212" : "#fff"};
     height: 100vh;
     width: 100vw;
 

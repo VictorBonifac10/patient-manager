@@ -9,7 +9,7 @@ export const TableContainer = styled.div`
     gap: 10px;
     margin-bottom: 15px;
 
-    button{
+    button {
       padding: 10px 12px;
       border: none;
       border-radius: 50px;
@@ -23,8 +23,8 @@ export const TableContainer = styled.div`
     button:hover {
       background-color: #125a82ff;
     }
-
   }
+
   .search-container input {
     width: 300px;
     padding: 8px 12px;
@@ -40,33 +40,46 @@ export const TableContainer = styled.div`
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
   }
 
+  /* === Wrapper da tabela com scroll === */
+  .table-wrapper {
+    max-height: 290px; /* altura suficiente p/ ~5 linhas */
+    overflow-y: auto;  /* scroll vertical */
+    overflow-x: auto;  /* scroll horizontal */
+    border-radius: 10px;
+    box-shadow: 3px 3px 4px #626262ff;
+  }
+
   table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     font-family: Arial, sans-serif;
+    min-width: 800px; /* força scroll horizontal se ficar pequeno */
   }
 
-  th, td{
+  th, td {
     padding: 12px;
     text-align: center;
     color: gray;
     font-weight: 300;
     background-color: white;
+    white-space: nowrap; /* evita quebra de linha dentro da célula */
+    text-overflow: ellipsis;
   }
 
-  th{
+  th {
     background-color: #3ba2daff;
     color: white;
+    position: sticky;
+    top: 0; /* cabeçalho fixo no scroll */
+    z-index: 1;
   }
-
 
   td.actions {
     display: flex;
     gap: 10px;
+    justify-content: center;
   }
 
   td.actions i {
@@ -81,4 +94,4 @@ export const TableContainer = styled.div`
   td.actions i.delete:hover {
     color: #f44336;
   }
-`
+`;

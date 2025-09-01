@@ -1,8 +1,12 @@
 import { Header, Aside, Services } from "../../pages/Home/styles"
 import { useNavigate } from "react-router-dom"
+import { useContext } from "react";
 import Logo from '../../assets/logo.svg'
+import { DarkModeContext } from "../../contexts/DarkModeContext";
 
 function HeaderBase() {
+
+    const { toggleDarkMode } = useContext(DarkModeContext);
 
     const navigate = useNavigate()
 
@@ -12,7 +16,7 @@ function HeaderBase() {
                 <p>Seja bem-vindo!</p>
                 <div>
                     <i class="ri-sun-fill"></i>
-                    <i class="ri-user-3-fill"></i>
+                    <i className="ri-user-3-fill" onClick={toggleDarkMode}></i>
                 </div>
             </Header>
             <Aside>

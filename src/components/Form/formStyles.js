@@ -18,7 +18,7 @@ export const Title = styled.h2`
 export const FormRow = styled.div`
   display: flex;
   gap: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -55,6 +55,7 @@ export const Button = styled.button`
   background-color: #3ba2daff;
   cursor: pointer;
   transition: background 0.3s;
+  margin-top: 30px;
 
   &:hover {
     background-color: #125a82ff;

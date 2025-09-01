@@ -1,13 +1,17 @@
 import { Container, Main, Banner } from "./styles"
+import { useContext } from "react";
 import HeaderBase from "../../components/HeaderBase/HeaderBase"
 import Table from "../../components/Table/Table"
+import { DarkModeContext } from "../../contexts/DarkModeContext";
 
 import ImgBanner from '../../assets/banner.jpg'
 
 function App() {
 
+  const { darkMode } = useContext(DarkModeContext);
+
   return (
-    <Container>
+    <Container darkMode={darkMode}>
       <HeaderBase />
       <Main>
         <Banner>
