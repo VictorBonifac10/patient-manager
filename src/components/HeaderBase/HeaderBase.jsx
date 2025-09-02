@@ -15,8 +15,8 @@ function HeaderBase() {
             <Header>
                 <p>Seja bem-vindo!</p>
                 <div>
-                    <i class="ri-sun-fill"></i>
-                    <i className="ri-user-3-fill" onClick={toggleDarkMode}></i>
+                    <i class="ri-sun-fill" onClick={toggleDarkMode}></i>
+                    <i className="ri-user-3-fill"></i>
                 </div>
             </Header>
             <Aside>

@@ -1,8 +1,10 @@
 import { FormContainer, Title, FormRow, FormGroup, Label, Input, Button } from './formStyles'
-import { useRef } from 'react';
-import api from '../../services/api';
+import { useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function Form() {
+function Form({ initialData, onSubmit }) {
+
+    const navigate = useNavigate();
 
     const inputCpf = useRef()
     const inputName = useRef()
@@ -11,23 +13,39 @@ function Form() {
     const inputEmail = useRef()
     const inputPlanoSaude = useRef()
 
-    async function registerNewUser(){
-        const data = await api.post('/usuarios', {
+    // Preencher os campos com os dados iniciais, se houver
+    useEffect(() => {
+        if (initialData) {
+            inputCpf.current.value = initialData.cpf || ""
+            inputName.current.value = initialData.name || ""
+            inputDataNascimento.current.value = initialData.dataNascimento || ""
+            inputTelefone.current.value = initialData.telefone || ""
+            inputEmail.current.value = initialData.email || ""
+            inputPlanoSaude.current.value = initialData.planoSaude || ""
+        }
+    }, [initialData])
+
+    const handleSave = () => {
+        const userData = {
             cpf: inputCpf.current.value,
             name: inputName.current.value,
             dataNascimento: inputDataNascimento.current.value,
             telefone: inputTelefone.current.value,
             email: inputEmail.current.value,
             planoSaude: inputPlanoSaude.current.value
-        })
+        }
 
-        console.log(data)
+        if (onSubmit) {
+            onSubmit(userData)
+        }
+
+        navigate('/');
     }
 
     return (
         <FormContainer>
             <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "40px" }}>
-                <i class="ri-user-add-fill" style={{ color: "gray", fontSize: "20px" }}></i>
+                <i className="ri-user-add-fill" style={{ color: "gray", fontSize: "20px" }}></i>
                 <Title>Cadastro de Usuário</Title>
             </div>
             <form>
@@ -63,7 +81,9 @@ function Form() {
                         <Input type="text" id="plano" placeholder="ex.: VidaPlus" ref={inputPlanoSaude} />
                     </FormGroup>
                 </FormRow>
-                <Button type="button" onClick={registerNewUser}>Salvar Informações</Button>
+                <Button type="button" onClick={handleSave}>
+                    {initialData ? "Atualizar Informações" : "Salvar Informações"}
+                </Button>
             </form>
         </FormContainer>
     );
