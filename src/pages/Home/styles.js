@@ -9,7 +9,7 @@ export const Container = styled.div`
     "aside header header"
     "aside main main"
     "aside main main";
-  grid-template-columns: 250px 1fr 1fr;
+grid-template-columns: 250px minmax(0, 1fr) minmax(0, 1fr);
   grid-template-rows: 80px 1fr 1fr;
   
   /* Faz o grid ocupar todo o espaço */
@@ -96,7 +96,7 @@ export const Aside = styled.aside`
     @media (max-width: 768px) {
     display: block;
     margin: 0 auto;
-    width: 30%;
+    width: 50%;
   }}
 
   ul{
@@ -113,10 +113,9 @@ export const Aside = styled.aside`
     font-weight: 300;
   }
 
-  /* Em celular ocupar largura total */
   @media (max-width: 768px) {
-    width: 96%;
-    text-align: center;
+    flex-direction: column;
+    max-width: 100%;
   }
 `
 
@@ -148,21 +147,21 @@ export const Services = styled.div`
   }
 
   /* Botões centralizados no mobile */
-  @media (max-width: 768px) {
-    button {
-      justify-content: center;
-      width: 100%;
-    }
-  }
+@media (max-width: 768px) {
+  width: 96%;
+  margin: 10px auto; /* 🔑 centraliza horizontalmente */
+}
+
 `
 
 export const Main = styled.main`
   grid-area: main;
   margin: 10px;
+  min-width: 0; /* 🔑 permite encolher */
+  overflow: hidden; /* evita estourar */
 `
 
 export const Banner = styled.div`
-  grid-area: banner;
   display: flex;
   justify-content: center;
   align-items: center;

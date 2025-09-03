@@ -25,7 +25,7 @@ function HeaderBase() {
                 <Services>
                     <ul>
                         <h2>Pacientes</h2>
-                        <button type='button' onClick={() => navigate('/')}>
+                        <button type='button' onClick={() => navigate('/home')}>
                             <i class="ri-home-fill"></i>
                             <li>Home</li>
                         </button>

@@ -26,7 +26,7 @@ function Edit() {
         try {
             await api.put(`/usuarios/${cpf}`, updatedData);
             console.log("Usuário atualizado!", updatedData);
-            navigate("/"); // redireciona depois de atualizar
+            navigate("/home"); // redireciona depois de atualizar
         } catch (error) {
             console.error("Erro ao atualizar usuário:", error);
         }

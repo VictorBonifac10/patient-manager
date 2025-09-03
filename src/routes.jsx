@@ -7,6 +7,10 @@ import Edit from "./pages/Edit/Edit";
 const router = createBrowserRouter([
     {
         path: '/',
+        element: <Login />
+    },
+    {
+        path: '/home',
         element: <App />
     },
     {
@@ -14,12 +18,8 @@ const router = createBrowserRouter([
         element: <Register />
     },
     {
-        path: '/editar-usuario/:cpf', // <-- rota dinâmica com parâmetro
+        path: '/editar-usuario/:cpf',
         element: <Edit />
-    },
-    {
-        path: '/login',
-        element: <Login />
     }
 ])
 

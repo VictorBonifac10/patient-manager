@@ -39,7 +39,7 @@ function Form({ initialData, onSubmit }) {
             onSubmit(userData)
         }
 
-        navigate('/');
+        navigate('/home');
     }
 
     return (

@@ -19,7 +19,7 @@ export const TableContainer = styled.div`
       color: white;
       font-size: 16px;
       cursor: pointer;
-      flex-shrink: 0; /* botão não encolhe */
+      flex-shrink: 0;
     }
 
     button:hover {
@@ -44,13 +44,15 @@ export const TableContainer = styled.div`
     }
   }
 
-  /* === Wrapper da tabela com scroll === */
   .table-wrapper {
     width: 100%;
-    overflow-x: auto;  /* scroll horizontal se necessário */
-    overflow-y: auto;  /* scroll vertical */
-    border-radius: 10px;
+    height: 320px;
+    max-width: 100%; /* garante que não estoure */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* scroll suave em mobile */
+    overflow-y: auto;
     box-shadow: 3px 3px 4px #626262ff;
+    border-radius: 10px;
   }
 
   table {
@@ -72,6 +74,13 @@ export const TableContainer = styled.div`
     text-overflow: ellipsis;
     overflow: hidden; /* para ellipsis funcionar */
   }
+
+  @media (max-width: 600px) {
+  th, td {
+    padding: 6px 4px;
+    font-size: 0.75rem;
+  }
+}
 
   th {
     background-color: #3ba2daff;
@@ -102,7 +111,6 @@ export const TableContainer = styled.div`
     color: #f44336;
   }
 
-  /* === Media Queries para telas pequenas === */
   @media (max-width: 600px) {
     .search-container {
       flex-direction: column;

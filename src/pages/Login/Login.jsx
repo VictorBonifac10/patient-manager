@@ -18,7 +18,7 @@ function Login() {
         // Usuário e senha fixos do card
         if (username === 'obsmain12' && password === 'obsmain12') {
             // Login correto → redireciona para a tela principal
-            navigate('/'); // substitua '/' pelo caminho da tela principal
+            navigate('/home');
         } else {
             alert('Usuário ou senha incorretos!');
         }

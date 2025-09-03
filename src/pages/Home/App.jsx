@@ -90,10 +90,10 @@ function App() {
             <p>Pacientes + 80</p>
           </div>
         </Banner>
+        <Table pacientes={pacientes} onExcluir={handleExcluirPaciente} />
       </Main>
     </Container>
   )
-}
+}        
 
-//<Table pacientes={pacientes} onExcluir={handleExcluirPaciente} />
 export default App;
