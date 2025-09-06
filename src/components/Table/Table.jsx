@@ -1,57 +1,67 @@
 import { TableContainer } from "./tableStyles"
 import { useRef, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // <-- Importa o navigate
+import { useNavigate } from "react-router-dom";
 import api from "../../services/api"
 
 const Table = () => {
 
   const inputCpf = useRef()
-  const navigate = useNavigate(); // <-- Cria o navigate
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+
+  //------------------------------------------------------------------
+  // CARREGA OS DADOS DO BD E TRAZ PARA A TABELA
+  //------------------------------------------------------------------
 
   async function searchUser() {
-    let cpf = inputCpf.current.value
 
-    // Remove pontos e traços
-    cpf = cpf.replace(/[.\-]/g, "")
+    let cpf = inputCpf.current.value.replace(/[.\-]/g, "");
+
+    setLoading(true);
 
     if (!cpf) {
-      const { data } = await api.get('/usuarios')
-      setUsers(data)
-      return
-    }
-
-    try {
-      const { data } = await api.get(`/buscar/usuario/${cpf}`)
-
-      if (!data) {
-        alert("Usuário não encontrado!")
-        setUsers([])
-        return
+      const { data } = await api.get('/usuarios');
+      setUsers(data);
+    } else {
+      try {
+        const { data } = await api.get(`/buscar/usuario/${cpf}`);
+        if (!data) {
+          alert("Usuário não encontrado!");
+          setUsers([]);
+        } else {
+          setUsers([data]);
+        }
+      } catch (error) {
+        console.error("Erro ao buscar usuário:", error);
+        alert("Erro ao buscar usuário!");
+        setUsers([]);
       }
-
-      setUsers([data])
-    } catch (error) {
-      console.error("Erro ao buscar usuário:", error)
-      alert("Erro ao buscar usuário!")
-      setUsers([])
     }
+
+    setLoading(false);
+
   }
 
   const [users, setUsers] = useState([])
 
   useEffect(() => {
-    async function getUsers() {
-      const { data } = await api.get('/usuarios')
-      setUsers(data)
-    }
-    getUsers()
+    const getUsers = async () => {
+      setLoading(true);
+      const { data } = await api.get('/usuarios');
+      setUsers(data);
+      setLoading(false);
+    };
+    getUsers();
+  }, []);
 
-  }, [])
+  //------------------------------------------------------------------
+  // DELETA USUÁRIOS APARTIR DO CPF(ID) DE CADA UM
+  //------------------------------------------------------------------
 
   async function deleteUsers(cpf) {
     const confirmDelete = window.confirm("Você tem certeza que deseja deletar este usuário?")
 
-    if (!confirmDelete) return // se clicar em "Cancelar", não faz nada
+    if (!confirmDelete) return
 
     await api.delete(`/usuarios/${cpf}`)
 
@@ -59,7 +69,10 @@ const Table = () => {
     setUsers(updatedUsers)
   }
 
-  // Função para navegar para a página de edição
+  //------------------------------------------------------------------
+  // NAVEGA PARA A PAGINA DE EDITAR USUÁRIOS
+  //------------------------------------------------------------------
+  
   const editUser = (cpf) => {
     navigate(`/editar-usuario/${cpf}`);
   }
@@ -87,7 +100,13 @@ const Table = () => {
             </tr>
           </thead>
           <tbody>
-            {users.length === 0 ? (
+            {loading ? (
+              <tr>
+                <td colSpan="8" style={{ textAlign: "center" }}>
+                  Carregando dados do usuário. Aguarde!
+                </td>
+              </tr>
+            ) : users.length === 0 ? (
               <tr>
                 <td colSpan="8" style={{ textAlign: "center" }}>
                   Nenhum usuário encontrado

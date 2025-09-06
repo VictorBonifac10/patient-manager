@@ -13,7 +13,10 @@ function Form({ initialData, onSubmit }) {
     const inputEmail = useRef()
     const inputPlanoSaude = useRef()
 
-    // Preencher os campos com os dados iniciais, se houver
+    //------------------------------------------------------------------
+    // TRAZ O FORMULÁRIO PREENCHIDO COM OS DADOS CASO HOUVER (EDIT)
+    //------------------------------------------------------------------
+
     useEffect(() => {
         if (initialData) {
             inputCpf.current.value = initialData.cpf || ""
@@ -24,6 +27,10 @@ function Form({ initialData, onSubmit }) {
             inputPlanoSaude.current.value = initialData.planoSaude || ""
         }
     }, [initialData])
+
+    //------------------------------------------------------------------
+    // TRAZ O FORMULÁRIO VAZIO P/ SALVAR UM NOVO USER
+    //------------------------------------------------------------------
 
     const handleSave = () => {
         const userData = {

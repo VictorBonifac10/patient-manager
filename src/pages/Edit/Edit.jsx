@@ -5,8 +5,12 @@ import api from '../../services/api';
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+  //------------------------------------------------------------------
+  // BUSCA OS DADOS DE CADA USER PELO CPF E "JOGA" DENTRO DOS INPUTS EM  <FORM />
+  //------------------------------------------------------------------
+
 function Edit() {
-    const { cpf } = useParams(); // pega o CPF da URL
+    const { cpf } = useParams(); // PEGA O CPF DA URL
     const navigate = useNavigate();
     const [userData, setUserData] = useState(null);
 
@@ -26,7 +30,9 @@ function Edit() {
         try {
             await api.put(`/usuarios/${cpf}`, updatedData);
             console.log("Usuário atualizado!", updatedData);
-            navigate("/home"); // redireciona depois de atualizar
+
+            navigate("/home");
+            window.location.reload();
         } catch (error) {
             console.error("Erro ao atualizar usuário:", error);
         }
@@ -39,7 +45,9 @@ function Edit() {
                 {userData ? (
                     <Form initialData={userData} onSubmit={handleUpdate} />
                 ) : (
-                    <p>Carregando dados do usuário...</p>
+                    <p style={{ color: "gray", fontWeight: "300" }}>
+                        Carregando dados do usuário. Aguarde
+                    </p>
                 )}
             </Main>
         </Container>

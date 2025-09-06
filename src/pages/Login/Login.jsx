@@ -4,20 +4,23 @@ import { useNavigate } from 'react-router-dom';
 
 import Logo from '../../assets/logo.svg';
 
+
+//------------------------------------------------------------------
+// SIMULA UMA PAGINA DE LOGIN P/ CONTROLE DE ACESSO
+//------------------------------------------------------------------
+
 function Login() {
     const inputUsername = useRef();
     const inputPassword = useRef();
     const navigate = useNavigate();
 
     const Logar = (e) => {
-        e.preventDefault(); // evita que a página recarregue ao clicar no botão
+        e.preventDefault();
 
         const username = inputUsername.current.value;
         const password = inputPassword.current.value;
 
-        // Usuário e senha fixos do card
         if (username === 'obsmain12' && password === 'obsmain12') {
-            // Login correto → redireciona para a tela principal
             navigate('/home');
         } else {
             alert('Usuário ou senha incorretos!');

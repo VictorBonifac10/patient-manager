@@ -51,7 +51,6 @@ export const TableContainer = styled.div`
     overflow-x: auto;
     -webkit-overflow-scrolling: touch; /* scroll suave em mobile */
     overflow-y: auto;
-    box-shadow: 3px 3px 4px #626262ff;
     border-radius: 10px;
   }
 
@@ -61,6 +60,7 @@ export const TableContainer = styled.div`
     border-spacing: 0;
     border-radius: 10px;
     font-family: Arial, sans-serif;
+    box-shadow: 3px 3px 4px #626262ff;
     min-width: 0; /* permite ajustar à tela */
   }
 

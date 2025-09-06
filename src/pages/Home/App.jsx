@@ -14,7 +14,10 @@ function App() {
   const [pacientes60, setPacientes60] = useState(0);
   const [pacientes80, setPacientes80] = useState(0);
 
-  // Função para calcular idade a partir da data de nascimento
+  //------------------------------------------------------------------
+  // CALCULA A IDADE A PARTIR DE dataNascimento
+  //------------------------------------------------------------------
+
   const calcularIdade = (dataNascimento) => {
     const today = new Date();
     const nascimento = new Date(dataNascimento);
@@ -26,7 +29,10 @@ function App() {
     return idade;
   };
 
-  // Função para atualizar os totais dos cards
+  //------------------------------------------------------------------
+  // ATUALIZA OS CARDS
+  //------------------------------------------------------------------
+
   const atualizarTotais = (listaPacientes) => {
     let mais60 = 0;
     let mais80 = 0;
@@ -45,7 +51,10 @@ function App() {
     setPacientes80(mais80);
   };
 
-  // Buscar pacientes ao montar o componente
+  //------------------------------------------------------------------
+  // BUSCA PACIENTES AO MONTAR O COMPONENTE
+  //------------------------------------------------------------------
+
   useEffect(() => {
     const fetchPacientes = async () => {
       try {
@@ -59,13 +68,16 @@ function App() {
     fetchPacientes();
   }, []);
 
-  // Exclusão de paciente
+  //------------------------------------------------------------------
+  // EXCLUA PACIENTES
+  //------------------------------------------------------------------
+
   const handleExcluirPaciente = async (id) => {
     try {
       await api.delete(`/usuarios/${id}`);
       const novaLista = pacientes.filter(p => p.id !== id);
-      setPacientes(novaLista);      // atualiza o state
-      atualizarTotais(novaLista);    // atualiza os cards automaticamente
+      setPacientes(novaLista);      // ATUALIZA O STATE
+      atualizarTotais(novaLista);    // ATUALIZA OS CARDS AUTOMATICAMENTE
     } catch (error) {
       console.error('Erro ao excluir paciente:', error);
     }
@@ -94,6 +106,6 @@ function App() {
       </Main>
     </Container>
   )
-}        
+}
 
 export default App;
