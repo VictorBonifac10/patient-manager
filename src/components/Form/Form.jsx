@@ -59,7 +59,7 @@ function Form({ initialData, onSubmit }) {
                 <FormRow>
                     <FormGroup>
                         <Label htmlFor="cpf">CPF</Label>
-                        <Input type="text" id="cpf" placeholder="ex.: 00011122233" ref={inputCpf} />
+                        <Input style={{background: "#F0F0F0"}} type="text" id="cpf" placeholder="ex.: 00011122233" ref={inputCpf} readOnly />
                     </FormGroup>
                     <FormGroup>
                         <Label htmlFor="nome">Nome Completo</Label>

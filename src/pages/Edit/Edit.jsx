@@ -45,7 +45,7 @@ function Edit() {
                 {userData ? (
                     <Form initialData={userData} onSubmit={handleUpdate} />
                 ) : (
-                    <p style={{ color: "gray", fontWeight: "300" }}>
+                    <p style={{ color: "white", fontWeight: "300" }}>
                         Carregando dados do usuário. Aguarde
                     </p>
                 )}
